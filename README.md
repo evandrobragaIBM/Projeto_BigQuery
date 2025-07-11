@@ -53,18 +53,13 @@ Nome sugerido: `bigquery-ingestion`
 ➡️ [Download VS Code](https://code.visualstudio.com/)  
 Extensões recomendadas: **Python**, **Pylance**
 
-### 3. Criar ambiente virtual
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-### 4. Instalar dependências
+### 3. Instalar dependências
 
 ```bash
 pip install fastapi uvicorn pandas google-cloud-storage
 ```
+
+### IMPORTANTE: pip3 para Mac e sempre utilizar Bash.
 
 ---
 
@@ -92,7 +87,7 @@ def listar_veiculos():
     return df.to_dict(orient="records")
 ```
 
-### ▶️ Executar a API
+### ▶️ Executar a API no Terminal Bash
 
 ```bash
 uvicorn main:app --reload
@@ -166,5 +161,6 @@ Permission 'storage.objects.create' denied
 
 ---
 
-➡️ **Com o arquivo `veiculos_mais_vendidos_2024_completo.csv` armazenado no bucket `meu-bucket-dados-poc`, a Fase 1 está concluída.**  
+➡️ **Com o arquivo `veiculos_mais_vendidos_2024_completo.csv` armazenado no bucket `meu-bucket-dados-poc`, a Fase 1 está concluída.**
+
 Próxima etapa: **ingestão automatizada no BigQuery e visualização no Power BI.**
