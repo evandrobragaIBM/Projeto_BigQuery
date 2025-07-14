@@ -5,7 +5,7 @@ import os
 app = FastAPI()
 
 # Caminho do arquivo CSV
-CSV_PATH = "/Users/seu-user/Desktop/Projeto Ingestion_Query/veiculos_mais_vendidos_2024_completo.csv"
+CSV_PATH = CSV_PATH = "veiculos_mais_vendidos_2024_completo.csv"
 
 @app.get("/")
 def home():
