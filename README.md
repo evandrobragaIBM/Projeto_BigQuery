@@ -70,9 +70,7 @@ pip install fastapi uvicorn pandas google-cloud-storage requests
 
 ---
 
-## 📄 Scripts da Fase 1
-
-## OBSERVAÇÃO CÓDIGO API: 
+## 📄 Scripts da Fase 1 
 
 ### 🔹 API com FastAPI — `main.py`
 
@@ -138,8 +136,8 @@ import pandas as pd
 import requests
 from google.cloud import storage
 
-NOME_BUCKET = "meu-bucket-dados-poc"
-DESTINO_NO_BUCKET = "documento_poc/veiculos_mais_vendidos_2024_completo.csv"
+NOME_BUCKET = "seu-bucket" # substitua pelo bucket
+DESTINO_NO_BUCKET = "documento_poc/veiculos_mais_vendidos_2024_completo.csv" # diretório e arquivo a ser criado no seu bucket
 URL_API_VEICULOS = "https://sua-api-url.a.run.app/veiculos"  # substitua pela URL real
 
 @functions_framework.http
