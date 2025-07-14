@@ -125,7 +125,7 @@ uvicorn main:app --reload
 
 ---
 
-## 🔁 Script de Ingestão Automática via Cloud Run (Editor Inline)
+## 🔁 Script de Ingestão Automática via Cloud Run (Editor In-line)
 
 ### 🔹 Código da função — `main.py`
 
