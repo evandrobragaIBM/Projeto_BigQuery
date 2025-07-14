@@ -1,20 +1,35 @@
-from fastapi import FastAPI
+import functions_framework
 import pandas as pd
-import os
+import requests
+from google.cloud import storage
 
-app = FastAPI()
+# Nome do bucket e caminho destino
+NOME_BUCKET = "seu-bucket"
+DESTINO_NO_BUCKET = "pasta-exemplo/veiculos_mais_vendidos_2024_completo.csv"
 
-# Caminho do arquivo CSV
-CSV_PATH = CSV_PATH = "veiculos_mais_vendidos_2024_completo.csv"
+# Endpoint da sua API FastAPI no Cloud Run
+URL_API_VEICULOS = "https://sua-url/veiculos"
 
-@app.get("/")
-def home():
-    return {"mensagem": "API está rodando. Acesse /veiculos para ver os dados."}
+@functions_framework.http
+def carga_csv_para_gcs(request):
+    try:
+        # 1. Requisição para API de veículos
+        response = requests.get(URL_API_VEICULOS)
+        response.raise_for_status()
+        dados = response.json()
 
-@app.get("/veiculos")
-def listar_veiculos():
-    if not os.path.exists(CSV_PATH):
-        return {"erro": "Arquivo CSV não encontrado."}
-    
-    df = pd.read_csv(CSV_PATH)
-    return df.to_dict(orient="records")
+        # 2. Gravar CSV temporário
+        df = pd.DataFrame(dados)
+        caminho_tmp = "/tmp/veiculos_mais_vendidos.csv"
+        df.to_csv(caminho_tmp, index=False)
+
+        # 3. Upload para o Cloud Storage
+        client = storage.Client()
+        bucket = client.bucket(NOME_BUCKET)
+        blob = bucket.blob(DESTINO_NO_BUCKET)
+        blob.upload_from_filename(caminho_tmp)
+
+        return {"status": "sucesso", "mensagem": f"Arquivo enviado para gs://{NOME_BUCKET}/{DESTINO_NO_BUCKET}"}
+
+    except Exception as e:
+        return {"status": "erro", "mensagem": str(e)}
