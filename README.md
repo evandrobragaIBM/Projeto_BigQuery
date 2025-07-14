@@ -102,7 +102,7 @@ uvicorn main:app --reload
 
 ---
 
-## 🚀 Publicação da API no Cloud Run
+## 🚀 Publicação da API no Cloud Run via GitHub
 
 ### Estrutura básica do repositório:
 
