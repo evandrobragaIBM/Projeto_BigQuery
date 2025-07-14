@@ -72,6 +72,8 @@ pip install fastapi uvicorn pandas google-cloud-storage requests
 
 ## 📄 Scripts da Fase 1
 
+## OBSERVAÇÃO CÓDIGO API: 
+
 ### 🔹 API com FastAPI — `main.py`
 
 ```python
@@ -119,9 +121,10 @@ uvicorn main:app --reload
 2. Selecionar a origem do código como GitHub (opção de CI/CD)
 3. Escolher a branch `main` e tipo de build `buildpacks`
 4. Informar a linguagem: Python 3.10
-5. Deixar o ponto de entrada em branco (FastAPI detecta automaticamente)
+5. Informar em ponto de entrada: uvicorn main-api:app --host=0.0.0.0 --port=8080
 6. Habilitar acesso não autenticado
 7. Implantar o serviço e copiar o endpoint gerado
+8. Testar o link gerado com /veiculos
 
 ---
 
