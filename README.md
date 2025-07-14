@@ -137,7 +137,7 @@ import requests
 from google.cloud import storage
 
 NOME_BUCKET = "seu-bucket" # substitua pelo bucket
-DESTINO_NO_BUCKET = "documento_poc/veiculos_mais_vendidos_2024_completo.csv" # diretório e arquivo a ser criado no seu bucket
+DESTINO_NO_BUCKET = "documento_poc/veiculos_mais_vendidos_2024_completo.csv" # diretório e arquivo a ser criado
 URL_API_VEICULOS = "https://sua-api-url.a.run.app/veiculos"  # substitua pela URL real
 
 @functions_framework.http
