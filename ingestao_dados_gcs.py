@@ -1,10 +1,10 @@
 from google.cloud import storage
 
 # Caminho do arquivo CSV local
-CAMINHO_LOCAL = "/Users/evandrobraga/Desktop/Projeto Ingestion_Query/veiculos_mais_vendidos_2024_completo.csv"
+CAMINHO_LOCAL = "/Users/seu-user/Desktop/Projeto Ingestion_Query/veiculos_mais_vendidos_2024_completo.csv"
 
 # Nome do bucket já criado no seu projeto
-NOME_BUCKET = "meu-bucket-dados-poc"
+NOME_BUCKET = "seu-bucket" # Digite seu bucket criado
 # Caminho no bucket onde o arquivo será armazenado
 DESTINO_NO_BUCKET = "Documento PoC/veiculos_mais_vendidos_2024_completo.csv"
 
