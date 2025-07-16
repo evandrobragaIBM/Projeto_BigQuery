@@ -41,7 +41,7 @@ Nome sugerido: `bigquery-ingestion`
 * Acesse: [Console do GCP – Storage](https://console.cloud.google.com/storage)
 * Nome do bucket: `meu-bucket-dados-poc`
 
-### 4. Criar uma conta de serviço com chave JSON
+### 4. Criar uma conta de serviço com chave JSON (OPCIONAL: Para fins de teste local dos scripts)
 
 * Acesse: [Contas de Serviço – IAM](https://console.cloud.google.com/iam-admin/serviceaccounts)
 * Nome: `servicos-poc`
@@ -176,7 +176,7 @@ google-cloud-storage
 1. Acessar Cloud Run > Criar serviço > opção “Escrever função”
 2. Inserir o nome `carga-poc`, selecionar a região `southamerica-east1`
 3. Escolher linguagem Python 3.10
-4. Inserir os arquivos `main.py` e `requirements.txt` manualmente
+4. Inserir os arquivos `main.py` e `requirements.txt` manualmente, ou simplesmente editar os arquivos nativos
 5. No campo “Ponto de entrada da função”, digitar `carga_csv_para_gcs`
 6. Habilitar acesso não autenticado
 7. Implantar o serviço
