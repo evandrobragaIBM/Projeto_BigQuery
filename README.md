@@ -195,3 +195,46 @@ google-cloud-storage
 ➡️ **Com o arquivo `veiculos_mais_vendidos_2024_completo.csv` armazenado automaticamente no bucket `meu-bucket-dados-poc`, a Fase 1 está concluída.**
 
 Próxima etapa: **ingestão no BigQuery e visualização no Power BI.**
+
+## 📥 Fase 2: Ingestão no BigQuery e Qualificação de Dados
+
+Nesta etapa, realizamos o carregamento do arquivo CSV, que está no Cloud Storage, diretamente para o BigQuery e aplicamos uma qualificação de dados com SQL.
+
+### ▶️ Passo a passo: Carregamento único via Console
+
+1. Acesse o [BigQuery no Console GCP](https://console.cloud.google.com/bigquery)
+2. Vá até a aba **Explorer**, clique em **Adicionar dados**
+3. Selecione a opção: **Google Cloud Storage** → **Carregamento único de dados no GCS**
+4. Em **Criar Tabela**:
+
+   * Fonte: selecione seu bucket e o arquivo CSV
+   * Formato: CSV
+   * Esquema: **Detectar automaticamente**
+   * Particionamento: **Sem particionamento**
+   * Em "Conjunto de dados": clique em **Criar novo conjunto de dados** (ex: `Conjunto_PoC`)
+   * Nome da tabela: `veiculos-mais-vendidos-2024`
+5. Clique em **Criar Tabela**
+6. Após criada, vá em **Explorer** → selecione o conjunto de dados e visualize a tabela na aba **Visualização**
+
+---
+
+### 🔧 Qualificação da Tabela via SQL
+
+Após a importação inicial, é comum aplicar transformações ou ordenações que tornam a análise mais eficiente. O exemplo abaixo sobrescreve a tabela original com os dados ordenados por `posicao`:
+
+```sql
+CREATE OR REPLACE TABLE `poc-ingestao-bigquery.Conjunto_PoC.veiculos-mais-vendidos-2024` AS
+SELECT *
+FROM `poc-ingestao-bigquery.Conjunto_PoC.veiculos-mais-vendidos-2024`
+ORDER BY posicao ASC;
+```
+
+### 💡 Por que isso importa?
+
+* Evita a necessidade de ordenar os dados toda vez que forem consultados
+* Otimiza performance e leitura por ferramentas como o Power BI
+* Padroniza a estrutura para pipelines subsequentes (ex: agregações, joins)
+
+---
+
+➡️ A próxima etapa será conectar o Power BI ao BigQuery para visualizar os dados carregados e processados.
