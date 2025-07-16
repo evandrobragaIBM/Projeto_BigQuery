@@ -196,6 +196,7 @@ google-cloud-storage
 
 Próxima etapa: **ingestão no BigQuery e visualização no Power BI.**
 
+
 ## 📥 Fase 2: Ingestão no BigQuery e Qualificação de Dados
 
 Nesta etapa, realizamos o carregamento do arquivo CSV, que está no Cloud Storage, diretamente para o BigQuery e aplicamos uma qualificação de dados com SQL.
