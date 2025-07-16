@@ -33,7 +33,7 @@ Nome sugerido: `bigquery-ingestion`
 
 ### 3. Criar um bucket no Cloud Storage
 - Acesse: [Console do GCP – Storage](https://console.cloud.google.com/storage)
-- Nome do bucket: `meu-bucket-dados-poc`
+- Nome do bucket: `seu-bucket`
 
 ### 4. Criar uma conta de serviço com chave JSON
 - Acesse: [Contas de Serviço – IAM](https://console.cloud.google.com/iam-admin/serviceaccounts)
@@ -104,7 +104,7 @@ from google.cloud import storage
 CAMINHO_LOCAL = "/Users/seu-user/Desktop/Projeto Ingestion_Query/veiculos_mais_vendidos_2024_completo.csv"
 
 # Nome do bucket já criado no seu projeto
-NOME_BUCKET = "meu-bucket-dados-poc"
+NOME_BUCKET = "seu-bucket" # Adicione o nome do seu bucket criado
 # Caminho no bucket onde o arquivo será armazenado
 DESTINO_NO_BUCKET = "Documento PoC/veiculos_mais_vendidos_2024_completo.csv"
 
@@ -130,7 +130,7 @@ if __name__ == "__main__":
 > ⚠️ Antes de rodar esse script, defina a variável de ambiente. Rode o comando junto no terminal:
 
 ```bash
-export GOOGLE_APPLICATION_CREDENTIALS="/Users/evandrobraga/Desktop/Projeto Ingestion_Query/bigquery-ingestion-key.json"
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/seu-user/Desktop/Projeto Ingestion_Query/nome-da-sua-chave.json"
 python ingestao_dados_gcs.py
 ```
 
@@ -161,6 +161,6 @@ Permission 'storage.objects.create' denied
 
 ---
 
-➡️ **Com o arquivo `veiculos_mais_vendidos_2024_completo.csv` armazenado no bucket `meu-bucket-dados-poc`, a Fase 1 está concluída.**
+➡️ **Com o arquivo `veiculos_mais_vendidos_2024_completo.csv` armazenado no bucket `seu-bucket`, a Fase 1 está concluída.**
 
 Próxima etapa: **ingestão automatizada no BigQuery e visualização no Power BI.**
